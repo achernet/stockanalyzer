@@ -21,8 +21,8 @@ def getPriceList(price_list_str):
 
 
 def getVolumeList(volume_list_str):
-    volume_list = volume_list_str.strip(',').split(',')
-    cumulVols = [int(vol) for vol in volume_list]
+    volume_list = volume_list_str.replace("NaN", '0').strip(',').split(',')
+    cumulVols = [int(vol) for vol in volume_list if vol != 'NaN']
     diffVols = []
     for i, vol in enumerate(cumulVols):
         if i == 0:
